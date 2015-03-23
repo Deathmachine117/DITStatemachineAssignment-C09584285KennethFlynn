@@ -51,9 +51,10 @@
      <Compile Include="Assets\Scripts\Interactions.cs" />
      <Compile Include="Assets\Scripts\Keycards.cs" />
      <Compile Include="Assets\Scripts\MouseMovement.cs" />
+     <Compile Include="Assets\Scripts\Reset.cs" />
      <Compile Include="Assets\Scripts\Shoot.cs" />
+     <Compile Include="Assets\Scripts\TapToMove.cs" />
      <Compile Include="Assets\Scripts\Turret.cs" />
-     <Compile Include="Assets\TapToMove.cs" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
   </ItemGroup>
   <ItemGroup>
