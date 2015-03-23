@@ -7,7 +7,6 @@ public class Turret : MonoBehaviour {
 	Transform turret,player;
 	//These are the floats for the shooting
 	float shootTime, shootTimer = 0.3f;
-	//float searchTime, searchTimer = 4f;
 	//They are the floats for the random look timers
 	float randLookTime, randLookTimer = 0.3f;
 	//This is the ray variable
@@ -84,6 +83,7 @@ public class Turret : MonoBehaviour {
 			//This if statement means if the bullet is fired to avoid the collider of the turret.
 			if(bullet) //if there is a bullet
 				Physics.IgnoreCollision(bullet.collider, collider);
+
 		}
 		//This if statment means if the players position away from the turret is longer than fifteen that the current state is set to the sleep case
 		if(Vector3.Distance(turret.position, player.position) > 15f)
@@ -95,7 +95,7 @@ public class Turret : MonoBehaviour {
 	bool DoRayCast() //bool return type, returns true if ray hits a collider
 	{
 		//This is a new ray which is created at the turrets position and shoots forward
-		ray = new Ray(turret.position, turret.transform.forward); 
+		ray = new Ray(this.transform.position, turret.transform.forward); 
 		//This sends out the ray at the above position and and assigns the length
 		bool rayHit = Physics.Raycast(ray, out target, 10f); 
 		//This returns the ray on a collision true or false.
@@ -117,7 +117,6 @@ public class Turret : MonoBehaviour {
 		//This turns off rigidbody using any gravity
 		bullet.rigidbody.useGravity = false; 
 		//This adds force to the bullet when its fired
-		bullet.rigidbody.AddForce(transform.up * -600f); //add force to the bullet
+		bullet.rigidbody.AddForce(transform.up * -600f); 
 	}
-
 }	

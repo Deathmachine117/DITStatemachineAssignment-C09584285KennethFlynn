@@ -1,26 +1,29 @@
-﻿using UnityEngine;
+﻿//Kenneth Flynn C09584285
+using UnityEngine;
 using System.Collections;
-
-public class TapToMove : MonoBehaviour {
-	//flag to check if the user has tapped / clicked. 
-	//Set to true on click. Reset to false on reaching destination
+//This script was taken from Unity answers as I wouldnt have been able to do this
+//This is the class to get the ship to follow after the mouse click
+public class TapToMove : MonoBehaviour
+{
+	//This boolean is set to true on click
 	private bool flag = false;
-	//destination point
+	//This is the vector of where the player ends up
 	private Vector3 endPoint;
-	//alter this to change the speed of the movement of player / gameobject
+	//This is the movement speed float
 	public float duration = 50.0f;
-	//vertical position of the gameobject
+	//Vertical position float
 	private float yAxis;
-	
-	void Start(){
+	//The start function of the object
+	void Start()
+	{
 		//save the y axis value of gameobject
 		yAxis = gameObject.transform.position.y;
 	}
 	
-	// Update is called once per frame
+	//Update function
 	void Update () {
 		
-		//check if the screen is touched / clicked   
+		//This if statement checks to see if the screen is touched or the mouse is clicked
 		if((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || (Input.GetMouseButtonDown(0)))
 		{
 			//declare a variable of RaycastHit struct
@@ -35,7 +38,7 @@ public class TapToMove : MonoBehaviour {
 			ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
 			#endif
 			
-			//Check if the ray hits any collider
+			//If statement checks if it hits colliders
 			if(Physics.Raycast(ray,out hit))
 			{
 				//set a flag to indicate to move the gameobject
@@ -49,15 +52,16 @@ public class TapToMove : MonoBehaviour {
 			
 		}
 		//check if the flag for movement is true and the current gameobject position is not same as the clicked / tapped position
-		if(flag && !Mathf.Approximately(gameObject.transform.position.magnitude, endPoint.magnitude)){ //&& !(V3Equal(transform.position, endPoint))){
-			//move the gameobject to the desired position
+		if(flag && !Mathf.Approximately(gameObject.transform.position.magnitude, endPoint.magnitude))
+		{ 
+			//This moves the gameobject to the position
 			gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, endPoint, 1/(duration*(Vector3.Distance(gameObject.transform.position, endPoint))));
 		}
 		//set the movement indicator flag to false if the endPoint and current gameobject position are equal
-		else if(flag && Mathf.Approximately(gameObject.transform.position.magnitude, endPoint.magnitude)) {
+		else if(flag && Mathf.Approximately(gameObject.transform.position.magnitude, endPoint.magnitude)) 
+		{
 			flag = false;
 			Debug.Log("I am here");
 		}
-		
 	}
 }

@@ -46,13 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MouseMovement.cs" />
-     <Compile Include="Assets\Movement.cs" />
+     <Compile Include="Assets\Scripts\Destroy.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\Interactions.cs" />
      <Compile Include="Assets\Scripts\Keycards.cs" />
+     <Compile Include="Assets\Scripts\MouseMovement.cs" />
+     <Compile Include="Assets\Scripts\Shoot.cs" />
      <Compile Include="Assets\Scripts\Turret.cs" />
-     <Compile Include="Assets\Shoot.cs" />
      <Compile Include="Assets\TapToMove.cs" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
   </ItemGroup>
